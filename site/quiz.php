@@ -1,5 +1,4 @@
 <?php
-
 require 'config.php';
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -51,15 +50,16 @@ foreach ($data as $r) {
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<div class="box">
     <h2><?= htmlspecialchars($quiz['title']) ?></h2>
     <div id="quiz-header"></div>
     <div id="quiz-container"></div>
-
-    <script src="assets/app.js"></script>
-    <script>
-        const questions = <?= json_encode(array_values($questions), JSON_UNESCAPED_UNICODE) ?>;
-        const quizId    = <?= $id ?>;
-        initQuiz(questions, quizId);
-    </script>
+</div>
+<script src="assets/app.js"></script>
+<script>
+    const questions = <?= json_encode(array_values($questions), JSON_UNESCAPED_UNICODE) ?>;
+    const quizId    = <?= $id ?>;
+    initQuiz(questions, quizId);
+</script>
 </body>
 </html>
