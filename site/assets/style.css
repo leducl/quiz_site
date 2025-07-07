@@ -47,7 +47,8 @@ body {
 /* ==============================================
    Conteneur principal
    ============================================== */
-#quiz-container {
+#quiz-container,
+.box {
   background: var(--color-card-bg);
   border-radius: var(--border-radius);
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
@@ -58,7 +59,8 @@ body {
   transition: transform var(--transition);
 }
 
-#quiz-container:hover {
+#quiz-container:hover,
+.box:hover {
   transform: translateY(-4px);
 }
 
@@ -111,6 +113,11 @@ body {
   display: block;
   line-height: 1.4;
   user-select: none;
+}
+
+.box h2 {
+  margin-top: 0;
+  text-align: center;
 }
 
 /* Styles pour correction */

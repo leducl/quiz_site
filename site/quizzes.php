@@ -15,21 +15,31 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$_SESSION['user_id']]);
 $quizzes = $stmt->fetchAll();
 ?>
-<!DOCTYPE html><html><head><link rel="stylesheet" href="assets/style.css"></head><body>
-<h2>Liste des QCM</h2>
-<p><a href="create.php">Créer un QCM</a> | <a href="logout.php">Déconnexion</a></p>
-<table>
-  <tr>
-    <th>Titre</th><th>Auteur</th><th>Nb Q</th><th>Dernière note</th><th>Action</th>
-  </tr>
-  <?php foreach($quizzes as $q): ?>
-  <tr>
-    <td><?=htmlspecialchars($q['title'])?></td>
-    <td><?=htmlspecialchars($q['author'])?></td>
-    <td><?= $q['total_questions'] ?></td>
-    <td><?= $q['last_score'] ?? '-' ?></td>
-    <td><a href="quiz.php?id=<?=$q['id']?>">Passer</a></td>
-  </tr>
-  <?php endforeach; ?>
-</table>
-</body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>QCM disponibles</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="box">
+    <h2>Liste des QCM</h2>
+    <p><a href="create.php">Créer un QCM</a> | <a href="logout.php">Déconnexion</a></p>
+    <table>
+        <tr>
+            <th>Titre</th><th>Auteur</th><th>Nb Q</th><th>Dernière note</th><th>Action</th>
+        </tr>
+        <?php foreach($quizzes as $q): ?>
+        <tr>
+            <td><?= htmlspecialchars($q['title']) ?></td>
+            <td><?= htmlspecialchars($q['author']) ?></td>
+            <td><?= $q['total_questions'] ?></td>
+            <td><?= $q['last_score'] ?? '-' ?></td>
+            <td><a href="quiz.php?id=<?= $q['id'] ?>">Passer</a></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+</body>
+</html>
